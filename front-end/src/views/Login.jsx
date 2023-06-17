@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { FcGoogle } from 'react-icons/fc'
 import heroVideo from '../assets/Hero_video.mp4'
 import logo from '../assets/1.png'
+import { createOrGetUser } from '../utils'
 
 export const Login = () => {
     return (
@@ -23,7 +24,7 @@ export const Login = () => {
                     </div>
                     <div className="shadow-2xl">
                         <GoogleLogin 
-                        onSuccess={(response) => console.log(response)}
+                        onSuccess={(response) => createOrGetUser(response)}
                         onError={() => console.log("Error!")} />
                     </div>
                 </div>
