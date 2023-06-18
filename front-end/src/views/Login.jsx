@@ -1,11 +1,35 @@
 import { GoogleLogin, googleLogout } from '@react-oauth/google'
 import { useNavigate } from "react-router-dom"
-import { FcGoogle } from 'react-icons/fc'
+import jwt_decode from 'jwt-decode'
+import { client } from '../client'
 import heroVideo from '../assets/Hero_video.mp4'
 import logo from '../assets/1.png'
-import { createOrGetUser } from '../utils'
 
-export const Login = () => {
+const Login = () => {
+
+
+    const navigate = useNavigate()
+
+    const createOrGetUser = async (response) => {
+
+        const decoded = jwt_decode(response.credential)
+        localStorage.setItem('user', JSON.stringify(decoded))
+        const { name, picture, sub } = decoded
+        const user = {
+            _id: sub,
+            _type: 'user',
+            username: name,
+            image: picture
+        }
+
+        client.createIfNotExists(user)
+            .then(() => {
+                navigate('/')
+            })
+
+        console.log(decoded);
+    }
+
     return (
         <div className="flex justify-start items-center flex-col h-screen">
             <div className="relative w-full h-full">
@@ -23,12 +47,14 @@ export const Login = () => {
                         <img src={logo} width='230px' alt="logo" />
                     </div>
                     <div className="shadow-2xl">
-                        <GoogleLogin 
-                        onSuccess={(response) => createOrGetUser(response)}
-                        onError={() => console.log("Error!")} />
+                        <GoogleLogin
+                            onSuccess={(response) => createOrGetUser(response)}
+                            onError={() => console.log("Error!")} />
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+export default Login
