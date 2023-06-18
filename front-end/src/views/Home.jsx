@@ -32,10 +32,10 @@ export const Home = () => {
 
   return (
     <div className="flex bg-gray-50 sd:flex-row flex-col h-screen transition-height duration-75 ease-out">
-      <div className="hidden sd:flex h-screen flex-initial">
+      <div className="hidden md:flex h-screen flex-initial">
         <Sidebar user={user && user} closeToggle={setToggleSideBar} />
       </div>
-      <div className="flex sd:hidden flex-row">
+      <div className="flex md:hidden flex-row">
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
           <Hamburger className='cursor-pointer' toggled={toggleSideBar} toggle={setToggleSideBar} />
           <Link to='/'>
