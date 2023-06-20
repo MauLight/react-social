@@ -156,6 +156,10 @@ export const genres = [
         image: 'https://i.postimg.cc/CLrgXPJr/comedy.jpg',
     },
     {
+        name: 'drama',
+        image: 'https://i.postimg.cc/7LYL6VWs/drama.jpg'
+    },
+    {
         name: 'epic',
         image: 'https://i.postimg.cc/DyPgwHR5/epic.jpg',
     },
