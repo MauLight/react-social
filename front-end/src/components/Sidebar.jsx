@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { RiHomeFill } from 'react-icons/ri';
 import { IoIosArrowForward } from 'react-icons/io';
 import logo from '../assets/1.png'
-import { categories } from '../utils/data';
+import { genres } from '../utils/data';
 
 const Sidebar = ({ user, closeToggle }) => {
 
@@ -32,10 +32,10 @@ const Sidebar = ({ user, closeToggle }) => {
             <RiHomeFill />
             Home
           </NavLink>
-          <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover categories</h3>
-          {categories.slice(0, categories.length - 1).map((category) => (
+          <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover genres</h3>
+          {genres.map((category) => (
             <NavLink
-              to={`/category/${category.name}`}
+              to={`/genre/${category.name}`}
               className={({ isActive }) => (isActive ? isActiveStyle : isNotActiveStyle)}
               onClick={handleCloseSideBar}
               key={category.name}

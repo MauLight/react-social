@@ -8,13 +8,15 @@ import { Wall } from "./Wall"
 import { client } from '../client'
 import logo from '../assets/1.png'
 import { userQuery } from "../utils/data"
+import { fetchUser } from "../utils/fetchuser";
 
 export const Home = () => {
 
   const [user, setUser] = useState(null)
   const [toggleSideBar, setToggleSideBar] = useState(false)
+  const [reload, setReload] = useState(false)
   const scrollRef = useRef(null)
-  const userInfo = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+  const userInfo = fetchUser()
 
   useEffect(() => {
     scrollRef.current.scrollTo(0, 0)
@@ -25,7 +27,6 @@ export const Home = () => {
     client.fetch(query)
       .then((data) => {
         setUser(data[0])
-        console.log(data[0])
       })
 
   }, [])
