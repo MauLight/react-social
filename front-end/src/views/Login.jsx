@@ -26,8 +26,6 @@ const Login = () => {
             .then(() => {
                 navigate('/')
             })
-
-        console.log(decoded);
     }
 
     return (

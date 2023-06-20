@@ -30,6 +30,7 @@ const Feed = () => {
   }, [categoryId])
 
   if (loading) return <Spinner message="We're adding new ideas to your feed!" />
+  if (pins?.length === 0) return <Spinner message="We're adding new screenplays to your feed!" />
 
   return (
     <div>
