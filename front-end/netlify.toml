@@ -1,4 +1,4 @@
 [[redirects]]
 from="/*"
-to="{base URL of your site}"
+to = "/index.html"
 status=200

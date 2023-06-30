@@ -7,6 +7,7 @@ import { userCreatedPinsQuery, userQuery, userSavedPinsQuery } from '../utils/da
 import { client } from "../client"
 import MasonryLayout from './Masonry'
 import Spinner from "./Spinner"
+import { Button } from "@nextui-org/react"
 
 const UserProfile = () => {
 
@@ -55,8 +56,8 @@ const UserProfile = () => {
         <div className="relative flex flex-col mb-7">
           <div className="flex flex-col justify-center items-center">
             <img
-              className=" w-full h-250 2xl:h-510 shadow-lg object-cover"
-              src="https://source.unsplash.com/1600x900/?nature,photography,technology"
+              className=" w-full h-[500px] 2xl:h-510 shadow-lg object-cover"
+              src="https://i.postimg.cc/SQ7KkBd9/11.jpg"
               alt="user-pic"
             />
             <img
@@ -88,27 +89,20 @@ const UserProfile = () => {
               }
             </div>
           </div>
-          <div className="text-center mb-7">
-            <button
-              type="button"
-              onClick={(e) => {
-                setText(e.target.textContent)
-                setActBtn('created')
-              }}
-              className={`${actBtn === 'created' ? activeBtnStyles : notActiveBtnStyles}`}
-            >
-              Written
-            </button>
-            <button
-              type="button"
-              onClick={(e) => {
-                setText(e.target.textContent)
-                setActBtn('saved')
-              }}
-              className={`${actBtn === 'saved' ? activeBtnStyles : notActiveBtnStyles}`}
-            >
-              Saved
-            </button>
+          <div className="flex justify-center text-center mb-7">
+
+            <Button onPress={(e) => {
+              setText(e.target.textContent)
+              setActBtn('created')
+            }} auto color="gradient" rounded bordered>
+              <p className="px-2">Written</p>
+            </Button>
+            <Button onPress={(e) => {
+              setText(e.target.textContent)
+              setActBtn('saved')
+            }} auto color="gradient" rounded bordered>
+              <p className="px-3">Saved</p>
+            </Button>
           </div>
 
           {
@@ -117,17 +111,17 @@ const UserProfile = () => {
                 <MasonryLayout pins={pins} />
               </div>
             )
-            :
-            (
-              <div className="flex justify-center font-bold items-center w-full text-xl mt-2">
-                <p>No screenplays found!</p>
-              </div>
-            )
+              :
+              (
+                <div className="flex justify-center font-bold items-center w-full text-xl mt-2">
+                  <p>No screenplays found!</p>
+                </div>
+              )
           }
 
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

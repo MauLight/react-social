@@ -8,6 +8,7 @@ import { client, urlFor } from '../client'
 import MasonryLayout from './Masonry'
 import { pinDetailMorePinQuery, pinDetailQuery } from '../utils/data'
 import Spinner from './Spinner'
+import { Button } from '@nextui-org/react';
 
 const PinDetail = ({ user }) => {
 
@@ -178,13 +179,10 @@ const PinDetail = ({ user }) => {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-            <button
-              type='button'
-              className='bg-red-500 text-white rounded-full px-6 py-2 font-semibold text-base outline-none'
-              onClick={addComment}
-            >
+            <Button auto color="gradient" rounded bordered>
               {addingComment ? 'Posting...' : 'Post'}
-            </button>
+            </Button>
+
           </div>
         </div>
       </div>
